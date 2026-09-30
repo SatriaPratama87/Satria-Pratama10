@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="cyan">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portofolio Lengkap & Interaktif Satria Pratama - Creative Front-End Developer & UI/UX Designer. Fitur interaktif: Terminal CLI, Urutan Anggota Keluarga, dan Galeri Studi Kasus.">
+  <meta name="keywords"
+    content="Portfolio, Front-End Developer, UI/UX Designer, Creative Technologist, Satria Pratama, Web Developer Ruteng, Interactive Portfolio">
+  <title>Satria Pratama | Creative Front-End Developer & UI/UX Specialist</title>
+
+  <!-- Google Fonts: Outfit & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome CDN untuk Ikon Modern -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet Utama -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==============================================
+       INDIKATOR PROGRES SCROLL ATAS
+  =============================================== -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- ==============================================
+       HEADER & NAVIGASI STICKY LENGKAP
+  =============================================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Beranda Satria Pratama">
+        <span class="logo-symbol">&lt;</span>Satria<span class="logo-accent">.dev</span><span
+          class="logo-symbol">/&gt;</span>
+      </a>
+
+      <!-- Status Waktu & Ketersediaan Live -->
+      <div class="nav-status-pill" id="navStatusPill" title="Waktu Lokal Pengembang (WITA UTC+8)">
+        <span class="status-pulse-dot"></span>
+        <span class="status-city">Ruteng:</span>
+        <span class="status-time" id="localClock">--:--:--</span>
+        <span class="status-badge-hire">Available</span>
+      </div>
+
+      <!-- Menu Navigasi Desktop -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Beranda</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">Tentang</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Keahlian</a></li>
+          <li class="nav-item"><a href="#journey" class="nav-link">Linimasa</a></li>
+          <li class="nav-item"><a href="#portfolio" class="nav-link">Galeri</a></li>
+          <li class="nav-item"><a href="#family" class="nav-link">Keluarga</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Kontak</a></li>
+        </ul>
+
+        <!-- Tombol Aksi Cepat Navbar -->
+        <div class="nav-actions">
+          <!-- Spotlight Search Trigger -->
+          <button class="nav-icon-btn" id="btnOpenSearch" aria-label="Buka Pencarian Cepat (Ctrl+K)"
+            title="Pencarian Cepat (Ctrl+K)">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span class="kbd-shortcut">⌘K</span>
+          </button>
+
+          <!-- Terminal CLI Launcher -->
+          <button class="nav-icon-btn" id="btnOpenTerminal" aria-label="Buka Terminal CLI"
+            title="Terminal Pengembang (>_)">
+            <i class="fa-solid fa-terminal"></i>
+          </button>
+
+          <!-- Theme & Customizer Trigger -->
+          <button class="nav-icon-btn" id="btnOpenSettings" aria-label="Ubah Tema & Efek"
+            title="Pengaturan Tema & Efek">
+            <i class="fa-solid fa-palette"></i>
+          </button>
+
+
+          <!-- Sound FX Toggle -->
+          <button class="nav-icon-btn" id="btnToggleSound" aria-label="Suara Efek UI" title="Efek Suara UI">
+            <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+          </button>
+
+          <a href="#contact" class="btn-nav-cta">Ayo Terhubung</a>
+        </div>
+      </nav>
+
+      <!-- Tombol Hamburger Mobile -->
+      <button class="nav-toggle" id="navToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       HERO SECTION DENGAN KANVAS PARTIKEL, STATS & TYPEWRITER
+  =============================================== -->
+  <section class="hero-section" id="hero">
+    <!-- Latar Belakang Kanvas Partikel Interaktif (Multi-Mode) -->
+    <canvas id="particleCanvas" class="hero-canvas"></canvas>
+
+    <div class="hero-glow-blob hero-glow-1"></div>
+    <div class="hero-glow-blob hero-glow-2"></div>
+
+    <div class="container hero-content">
+      <div class="badge-status reveal">
+        <span class="pulse-dot"></span>
+        <span>Terbuka untuk Kolaborasi & Proyek Baru (Q3/Q4)</span>
+      </div>
+
+      <h1 class="hero-title reveal">
+        Menciptakan Pengalaman Digital yang <span class="text-gradient">Imersif & Elegan</span>
+      </h1>
+
+      <p class="hero-subtitle reveal">
+        Halo! Saya <span class="highlight-name">Frederich Satria Pratama Putra Jehadu</span>, seorang
+        <span class="typewriter-wrapper">
+          <span id="typewriter" class="typewriter-text"></span>
+          <span class="typewriter-cursor">|</span>
+        </span>
+      </p>
+
+      <p class="hero-description reveal">
+        Hidup itu seperti coding: kalau ada error, jangan panik. Cari bug-nya, perbaiki, lalu run ulang sampai berhasil.
+      </p>
+
+      <div class="hero-cta-group reveal">
+        <a href="#portfolio" class="btn btn-primary">
+          <span>Eksplorasi </span>
+          <i class="fa-solid fa-arrow-down-long"></i>
+        </a>
+        <a href="#family" class="btn btn-accent-glow">
+          <i class="fa-solid fa-people-roof"></i>
+          <span>Profil Keluarga</span>
+        </a>
+        <button class="btn btn-glass" id="btnHeroTerminal">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Dev Console</span>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div class="hero-stats-grid reveal">
+        <div class="stat-card">
+          <span class="stat-num" data-target="4">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Tahun Pengalaman</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Proyek Terselesaikan</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-target="99">0</span><span class="stat-plus">%</span>
+          <span class="stat-label">PageSpeed & Performa</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-target="100">0</span><span class="stat-plus">%</span>
+          <span class="stat-label">Komitmen Kepuasan</span>
+        </div>
+      </div>
+
+      <!-- Tautan Sosial Media Cepat -->
+      <div class="hero-socials reveal">
+        <span class="socials-label">Sosial Media & Tautan:</span>
+        <div class="social-icons">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="GitHub Satria">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="LinkedIn Satria">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Instagram Satria">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Dribbble Satria">
+            <i class="fa-brands fa-dribbble"></i>
+          </a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="WhatsApp Satria">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indikator Scroll Bawah -->
+    <a href="#about" class="scroll-indicator" aria-label="Scroll ke bagian Tentang Saya">
+      <span class="mouse-icon">
+        <span class="wheel"></span>
+      </span>
+      <span class="scroll-text">Scroll ke Bawah</span>
+    </a>
+
+
+  </section>
+
+  <!-- ==============================================
+       ABOUT ME / BIO DATA SECTION
+  =============================================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Profil Diri</span>
+        <h2 class="section-title">Merajut <span class="text-gradient">Kreativitas & Logika</span></h2>
+        <p class="section-desc">Apa yang kamu tanam hari ini akan tumbuh jadi kekuatan mu di masa depan , terus belajar
+          terus melangkah karena masa depanmu pantas di perjuangkan.</p>
+      </div>
+
+      <div class="about-grid">
+        <!-- Kolom Foto: Interactive Hanging Lanyard Name Tag Badge -->
+        <div class="about-media reveal" id="aboutMediaStage">
+          <!-- Petunjuk Interaktif Drag & Swing -->
+          <div class="nametag-drag-hint" id="nametagDragHint">
+            <span class="hint-hand"><i class="fa-solid fa-hand-pointer"></i></span>
+            <span>Tarik &amp; Ayunkan Name Tag</span>
+          </div>
+
+          <!-- Stage Gantungan Lanyard -->
+          <div class="nametag-stage" id="nametagStage">
+            <!-- Pin / Dudukan Mount di Atas -->
+            <div class="nametag-mount" id="nametagMount">
+              <div class="mount-bracket"></div>
+              <div class="mount-pin"></div>
+              <div class="mount-ring"></div>
+            </div>
+
+            <!-- Tali Gantungan SVG Dinamis (Mengikuti Koordinat Fisika) -->
+            <svg class="nametag-lanyard-svg" id="nametagLanyardSvg" aria-hidden="true">
+              <defs>
+                <linearGradient id="lanyardRibbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#14171f" />
+                  <stop offset="25%" stop-color="#2c303b" />
+                  <stop offset="50%" stop-color="#1a1c24" />
+                  <stop offset="75%" stop-color="#2d323e" />
+                  <stop offset="100%" stop-color="#0f1117" />
+                </linearGradient>
+                <filter id="lanyardShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(0, 0, 0, 0.75)" />
+                </filter>
+              </defs>
+              <path id="nametagLanyardPath" class="lanyard-strap-path" d="" />
+            </svg>
+
+            <!-- Kartu Name Tag Gantung (Physics Object) -->
+            <div class="hanging-nametag" id="hangingNametag" role="region"
+              aria-label="Name Tag Interaktif Satria Pratama (Bisa Ditarik & Diayun)">
+              <!-- Klip Logam & Slot Pengait -->
+              <div class="nametag-clip-wrap">
+                <div class="clip-spring-ring"></div>
+                <div class="clip-metal-clasp"></div>
+                <div class="clip-slot-hole"></div>
+              </div>
+
+              <!-- Kartu Akrilik Name Tag Full Foto -->
+              <div class="nametag-card nametag-full-photo" id="nametagCard">
+                <!-- Lapisan Hologram Shimmer Kilau -->
+                <div class="nametag-holo-sheen" id="nametagHoloSheen"></div>
+
+                <!-- Wadah Penuh Foto Name Tag -->
+                <div class="nametag-photo-container">
+                  <img src="satria-profile.jpg" alt="Satria Pratama - Foto Profil" class="nametag-full-img"
+                    id="profileImgElement" loading="lazy" draggable="false">
+                  <div class="nametag-glass-reflection"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Biodata & Penjelasan -->
+        <div class="about-text-content reveal">
+          <h3 class="about-lead">
+            Saya percaya bahwa setiap piksel, interaksi mikro, dan animasi halus menentukan kesan pertama pengguna.
+          </h3>
+          <p class="about-paragraph">
+            Dengan dedikasi mendalam dalam ekosistem rekayasa web modern dan perancangan antarmuka pengguna, saya
+            merancang produk digital yang tidak hanya berkinerja secepat kilat namun juga memikat mata dengan sentuhan
+            elegan <em>glassmorphism</em>, tipografi modern, dan palet warna yang harmonis.
+          </p>
+
+          <!-- Bio Data Poin Penting -->
+          <div class="bio-info-grid">
+            <div class="bio-item">
+              <span class="bio-label">Nama Lengkap</span>
+              <span class="bio-value">Frederich Satria Pratama Putra Jehadu</span>
+            </div>
+            <div class="bio-item">
+              <span class="bio-label">Domisili</span>
+              <span class="bio-value">Ruteng, Manggarai, NTT, Indonesia</span>
+            </div>
+            <div class="bio-item">
+              <span class="bio-label">Pendidikan</span>
+              <span class="bio-value">Sistem Informasi (Software & UX)</span>
+            </div>
+            <div class="bio-item">
+              <span class="bio-label">Status</span>
+              <span class="bio-value text-accent">Mahasiswa Aktif & Freelancer</span>
+            </div>
+          </div>
+
+          <!-- Minat & Eksplorasi Kreatif -->
+          <div class="interests-box">
+            <span class="interests-label"><i class="fa-solid fa-compass"></i> Fokus & Minat Riset:</span>
+            <div class="interest-tags">
+              <span class="interest-tag">⚡ Creative Coding</span>
+              <span class="interest-tag">🎨 Design Systems</span>
+              <span class="interest-tag">🌐 Interactive Canvas & Web</span>
+              <span class="interest-tag">📱 Responsive UI/UX</span>
+              <span class="interest-tag">🚀 Micro-Interactions 60fps</span>
+            </div>
+          </div>
+
+          <!-- Tombol Aksi Bio -->
+          <div class="about-actions">
+            <a href="#portfolio" class="btn btn-primary">Lihat Galeri Hasil Karya</a>
+            <a href="javascript:void(0)" class="btn btn-outline" id="btnDownloadResume">
+              <i class="fa-solid fa-file-arrow-down"></i> Unduh CV (PDF)
+            </a>
+            <button class="btn btn-glass" id="btnOpenTerminalAbout">
+              <i class="fa-solid fa-terminal"></i> Buka Terminal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       INTERACTIVE SKILLS MATRIX & TECH PLAYGROUND SECTION
+  =============================================== -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Keahlian & Penguasaan</span>
+        <h2 class="section-title">Matriks Teknologi & <span class="text-gradient">Tech Stack</span></h2>
+        <p class="section-desc">Eksplorasi kumpulan alat, bahasa, dan pustaka pemrograman yang saya gunakan setiap hari
+          untuk membangun produk digital berkelas tinggi.</p>
+      </div>
+
+      <!-- Filter Kategori & Search Bar Keahlian -->
+      <div class="skills-control-bar reveal">
+        <div class="skills-filter-tabs">
+          <button class="skill-filter-btn active" data-skill-filter="all">Semua</button>
+          <button class="skill-filter-btn" data-skill-filter="frontend">Frontend</button>
+          <button class="skill-filter-btn" data-skill-filter="design">UI/UX & Desain</button>
+          <button class="skill-filter-btn" data-skill-filter="tools">Tools & Backend</button>
+          <button class="skill-filter-btn" data-skill-filter="creative">Creative Tech</button>
+        </div>
+
+        <div class="skills-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="skillSearchInput" placeholder="Cari teknologi (misal: React, CSS, Figma)..."
+            aria-label="Cari teknologi">
+        </div>
+      </div>
+
+      <!-- Grid Kartu Keahlian Interaktif -->
+      <div class="skills-grid reveal" id="skillsGrid">
+        <!-- Item 1: HTML5 & Semantic Web -->
+        <div class="skill-card" data-cat="frontend" data-name="html5" data-level="98" data-years="4 Tahun"
+          data-desc="Penataan struktur dokumen yang semantik, aksesibel (WCAG 2.1), dan optimal untuk SEO mesin pencari.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap html-icon">
+              <i class="fa-brands fa-html5"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">HTML5 Semantik</h4>
+              <span class="skill-badge-level">Expert</span>
+            </div>
+            <span class="skill-percent">98%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 98%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 4+ Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail HTML5">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 2: Modern CSS3 & Grid -->
+        <div class="skill-card" data-cat="frontend" data-name="css3" data-level="96" data-years="4 Tahun"
+          data-desc="Penguasaan CSS Grid modern, Flexbox, animasi transisi 60fps, CSS Variables dinamis, dan Glassmorphism.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap css-icon">
+              <i class="fa-brands fa-css3-alt"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">Modern CSS & Grid</h4>
+              <span class="skill-badge-level">Expert</span>
+            </div>
+            <span class="skill-percent">96%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 96%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 4+ Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail CSS3">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 3: Vanilla JavaScript ES6+ -->
+        <div class="skill-card" data-cat="frontend" data-name="javascript" data-level="94" data-years="3.5 Tahun"
+          data-desc="Arsitektur Vanilla JavaScript murni tanpa ketergantungan berat, DOM manipulation cepat, Web Audio API, Async/Await.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap js-icon">
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">JavaScript (ES6+)</h4>
+              <span class="skill-badge-level">Advanced</span>
+            </div>
+            <span class="skill-percent">94%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 94%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 3.5 Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail JavaScript">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 4: React.js & Vite Ecosystem -->
+        <div class="skill-card" data-cat="frontend" data-name="react" data-level="90" data-years="3 Tahun"
+          data-desc="Pengembangan aplikasi berbasis komponen SPA reaktif menggunakan React Hooks, Context API, state management, dan Vite bundling super kencang.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap react-icon">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">React & Vite Ecosystem</h4>
+              <span class="skill-badge-level">Advanced</span>
+            </div>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 90%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 3 Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail React">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 5: UI/UX & Prototyping (Figma) -->
+        <div class="skill-card" data-cat="design" data-name="figma" data-level="95" data-years="4 Tahun"
+          data-desc="Penyusunan wireframe, high-fidelity mockups, design tokens, autolayout responsif, dan prototipe interaktif untuk pengujian pengguna.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap figma-icon">
+              <i class="fa-brands fa-figma"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">Figma & UI/UX Design</h4>
+              <span class="skill-badge-level">Expert</span>
+            </div>
+            <span class="skill-percent">95%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 95%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 4+ Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail Figma">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 6: HTML5 Canvas 2D & Particles -->
+        <div class="skill-card" data-cat="creative" data-name="canvas" data-level="88" data-years="2.5 Tahun"
+          data-desc="Manipulasi grafis kanvas 2D, animasi partikel berbasis fisika matematis, game arcade ringan, dan efek visual interaktif.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap canvas-icon">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">Canvas 2D & Creative Code</h4>
+              <span class="skill-badge-level">Proficient</span>
+            </div>
+            <span class="skill-percent">88%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 88%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 2.5 Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail Canvas">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 7: Git, GitHub & CI/CD -->
+        <div class="skill-card" data-cat="tools" data-name="git" data-level="92" data-years="3.5 Tahun"
+          data-desc="Pengelolaan version control kolaboratif, branching strategy (Git Flow), pull requests review, dan deployment otomatis (Vercel/Netlify/GitHub Pages).">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap git-icon">
+              <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">Git & Version Control</h4>
+              <span class="skill-badge-level">Advanced</span>
+            </div>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 92%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 3.5 Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail Git">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Item 8: Performance Tuning & Web Vitals -->
+        <div class="skill-card" data-cat="tools" data-name="perf" data-level="91" data-years="3 Tahun"
+          data-desc="Audit Lighthouse 95+, asset minification, lazy loading cerdas, CLS (Cumulative Layout Shift) prevention, dan optimalisasi rendering 60fps.">
+          <div class="skill-card-top">
+            <div class="skill-icon-wrap perf-icon">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <div class="skill-meta">
+              <h4 class="skill-name">PageSpeed & Performance</h4>
+              <span class="skill-badge-level">Advanced</span>
+            </div>
+            <span class="skill-percent">91%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" style="width: 91%;"></div>
+          </div>
+          <div class="skill-card-bottom">
+            <span><i class="fa-regular fa-clock"></i> 3 Tahun Pengalaman</span>
+            <button class="btn-inspect-skill" aria-label="Lihat detail Performance">Inspeksi <i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Tech Inspector / Code Playground Card -->
+      <div class="tech-inspector-card reveal" id="techInspectorCard">
+        <div class="inspector-header">
+          <div class="inspector-title-group">
+            <div class="inspector-badge">
+              <i class="fa-solid fa-code"></i> Live Tech Inspector
+            </div>
+            <h4 class="inspector-tech-title" id="inspectorTitle">Modern CSS & Grid Architecture</h4>
+          </div>
+          <span class="inspector-tag-live" id="inspectorLevel">Tingkat Penguasaan: 96%</span>
+        </div>
+
+        <div class="inspector-body">
+          <p class="inspector-description" id="inspectorDesc">
+            Implementasi layout adaptif masa depan menggunakan CSS Subgrid, Container Queries, dan HSL custom variables
+            yang menghasilkan tampilan responsif di seluruh resolusi layar tanpa pembengkakan ukuran berkas.
+          </p>
+          <div class="inspector-code-block">
+            <div class="code-header">
+              <span class="code-lang" id="codeLang">CSS / Architecture</span>
+              <button class="btn-copy-code" id="btnCopyInspectorCode" title="Salin Kode">
+                <i class="fa-regular fa-copy"></i> Salin
+              </button>
+            </div>
+            <pre><code id="inspectorCode">.responsive-glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       CAREER & EDUCATION JOURNEY TIMELINE SECTION
+  =============================================== -->
+  <section class="journey-section" id="journey">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Jejak Langkah</span>
+        <h2 class="section-title">Linimasa <span class="text-gradient">Pendidikan & Karier</span></h2>
+        <p class="section-desc">Orang sukses tidak dilahirkan dari jalan yang mulus, melainkan dari keberanian
+          menghentakkan kaki di jalur yang terjal setiap langkah yang kamu ambil adalah bukti nyata bahwa kamu menolak
+          untuk menyerah pada keadaan.</p>
+      </div>
+
+      <!-- Filter Kategori Linimasa -->
+      <div class="timeline-filters reveal">
+        <button class="tl-filter-btn active" data-tl-filter="all">Semua Perjalanan</button>
+        <button class="tl-filter-btn" data-tl-filter="work">SD - SMP</button>
+        <button class="tl-filter-btn" data-tl-filter="edu">SMA</button>
+        <button class="tl-filter-btn" data-tl-filter="award">Perguruan Tinggi</button>
+      </div>
+
+      <!-- Pohon Linimasa Interaktif -->
+      <div class="timeline-tree reveal" id="timelineTree">
+
+        <!-- Milestone 1: Lead Front-End Developer -->
+        <div class="timeline-node" data-type="work">
+          <div class="timeline-dot">
+            <i class="fa-solid fa-book-open logo-book"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-period"><i class="fa-regular fa-calendar"></i> 2014 — 2020</span>
+              <span class="timeline-badge badge-active">Tamat</span>
+            </div>
+            <h3 class="timeline-role">SD - Jejak Pertama</h3>
+            <h4 class="timeline-org"><i class="fa-solid fa-building"></i> SDK Santa Agnes Ruteng</h4>
+            <p class="timeline-text">
+              Awal dari sebuah perjalanan panjang, tempat rasa ingin tahu dan semangat belajar mulai tumbuh.
+            </p>
+            <div class="timeline-tags">
+              <span>Next.js / Vite</span>
+              <span>Design System</span>
+              <span>Performance</span>
+              <span>Team Leadership</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 2: Freelance Creative Developer -->
+        <div class="timeline-node" data-type="work">
+          <div class="timeline-dot">
+            <i class="fa-solid fa-book-open logo-book"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-period"><i class="fa-regular fa-calendar"></i> 2020 — 2023</span>
+              <span class="timeline-badge">Tamat</span>
+            </div>
+            <h3 class="timeline-role">SMP - Langkah yang bertumbuh</h3>
+            <h4 class="timeline-org"><i class="fa-solid fa-building"></i> SMPN 1 LANGKE REMBONG</h4>
+            <p class="timeline-text">
+              Mulai mengenal diri,mengembangkan kemampuan, dan menentukan berbagai hal yang menarik untuk dipelajari.
+            </p>
+            <div class="timeline-tags">
+              <span>Vanilla JS</span>
+              <span>Glassmorphism</span>
+              <span>SEO</span>
+              <span>Client Consultation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 3: Pendidikan Mahasiswa Sistem Informasi -->
+        <div class="timeline-node" data-type="edu">
+          <div class="timeline-dot">
+            <i class="fa-solid fa-book-open logo-book"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-period"><i class="fa-regular fa-calendar"></i> 2023 — 2026</span>
+              <span class="timeline-badge badge-edu">Tamat</span>
+            </div>
+            <h3 class="timeline-role">SMA - Menentukan Arah</h3>
+            <h4 class="timeline-org"><i class="fa-solid fa-building"></i> SMAN 1 LANGKE REMBONG
+            </h4>
+            <p class="timeline-text">
+              Memperluas wawasan, mengasah potensi, dan mulai menentukan arah menuju masa depan.
+            </p>
+            <div class="timeline-tags">
+              <span>Sistem Informasi</span>
+              <span>Database Engineering</span>
+              <span>HCI / UX Research</span>
+              <span>Software Lifecycle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone 4: Juara Hackathon UI/UX -->
+        <div class="timeline-node" data-type="award">
+          <div class="timeline-dot">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-period"><i class="fa-regular fa-calendar"></i> 2026 - Sekarang</span>
+              <span class="timeline-badge badge-award">Sedang Berjalan</span>
+            </div>
+            <h3 class="timeline-role">Kuliah - Merangkai Masa Depan</h3>
+            <h4 class="timeline-org"><i class="fa-solid fa-university"></i> Universitas Merdeka Malang</h4>
+            <p class="timeline-text">
+              Mengubah pengetauhan menjadi kemampuan, memperdalam bidang sistem informasi,dan terus berkembang untuk
+              mencapai tujuan.
+            </p>
+            <div class="timeline-tags">
+              <span>Sedang Berjalan</span>
+              <span>UX Prototyping</span>
+              <span>Aksesibilitas</span>
+              <span>Pitching</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       GALERI FOTO & PORTOFOLIO MASONRY SECTION
+  =============================================== -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Eksplorasi Visual</span>
+        <h2 class="section-title">Galeri Foto & <span class="text-gradient">Portofolio Pilihan</span></h2>
+        <p class="section-desc">Koleksi karya visual, fotografi arsitektur modern, konsep UI futuristik, dan desain
+          digital interaktif yang dirancang dengan presisi piksel.</p>
+      </div>
+
+      <!-- Filter Kategori Portofolio -->
+      <div class="portfolio-filters reveal">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+      </div>
+
+      <!-- Masonry Grid Galeri -->
+      <div class="masonry-gallery" id="galleryGrid">
+
+        <!-- Item 1: UI Neon Dashboard -->
+        <article class="gallery-item tall reveal" data-category="ui" data-id="project-1">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop"
+              alt="Dashboard Analitik Finansial Berteknologi AI" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">UI/UX Design</span>
+              <h3 class="item-title">Aether Financial Dashboard</h3>
+              <p class="item-snippet">Antarmuka analitik cerdas dengan visualisasi data real-time berbasis neon glow.
+              </p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Aether Dashboard" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="1" aria-label="Buka studi kasus Aether Dashboard"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2: Creative Cyber Architecture -->
+        <article class="gallery-item wide reveal" data-category="photo" data-id="project-2">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=1200&auto=format&fit=crop"
+              alt="Fotografi Arsitektur Futuristik Minimalis" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">Fotografi</span>
+              <h3 class="item-title">Neon Geometry & Void</h3>
+              <p class="item-snippet">Eksplorasi sudut geometris perkotaan modern di bawah pencahayaan senja dramatis.
+              </p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Neon Geometry" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="2" aria-label="Buka studi kasus Neon Geometry"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3: Creative Tech - 3D Render -->
+        <article class="gallery-item reveal" data-category="creative" data-id="project-3">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=900&auto=format&fit=crop"
+              alt="Abstrak Fluida Digital 3D" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">Creative Tech</span>
+              <h3 class="item-title">Fluidity Dimension 01</h3>
+              <p class="item-snippet">Komposisi grafis fluida digital interaktif dengan pantulan cahaya prismatik.</p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Fluidity Dimension" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="3" aria-label="Buka studi kasus Fluidity Dimension"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4: UI Mobile App -->
+        <article class="gallery-item reveal" data-category="ui" data-id="project-4">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=900&auto=format&fit=crop"
+              alt="Desain Aplikasi Seluler Smart Living" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">UI/UX Design</span>
+              <h3 class="item-title">SmartPulse Mobile Ecosystem</h3>
+              <p class="item-snippet">Aplikasi pengontrol hunian pintar dengan fokus navigasi satu tangan dan tema gelap
+                adaptif.</p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh SmartPulse" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="4" aria-label="Buka studi kasus SmartPulse"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5: Creative Tech - Web Audio Project -->
+        <article class="gallery-item tall reveal" data-category="creative" data-id="project-5">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=900&auto=format&fit=crop"
+              alt="Eksperimen Hardware & Retro Synth" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">Creative Tech</span>
+              <h3 class="item-title">Cybernetic Synth Lab</h3>
+              <p class="item-snippet">Eksperimen sintesis audio dan visualisasi gelombang frekuensi berbasis browser.
+              </p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Cybernetic Synth" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="5" aria-label="Buka studi kasus Cybernetic Synth"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6: Photography Dark Night Cyberpunk -->
+        <article class="gallery-item reveal" data-category="photo" data-id="project-6">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=900&auto=format&fit=crop"
+              alt="Jalanan Metropolitan Berselimut Neon Malam" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">Fotografi</span>
+              <h3 class="item-title">Midnight Metropolis</h3>
+              <p class="item-snippet">Dokumentasi fotografi jalanan di pusat kota dengan pantulan neon setelah hujan
+                gerimis.</p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Midnight Metropolis" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="6" aria-label="Buka studi kasus Midnight Metropolis"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7: UI Glassmorphic E-Commerce -->
+        <article class="gallery-item wide reveal" data-category="ui" data-id="project-7">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+              alt="Antarmuka E-Commerce Mewah" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">UI/UX Design</span>
+              <h3 class="item-title">LuxeCraft Brand Experience</h3>
+              <p class="item-snippet">Platform toko busana eksklusif dengan pengalaman mikro-interaksi belanja 60fps.
+              </p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh LuxeCraft" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="7" aria-label="Buka studi kasus LuxeCraft"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8: Photography Minimal Abstract -->
+        <article class="gallery-item reveal" data-category="photo" data-id="project-8">
+          <div class="item-inner">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=900&auto=format&fit=crop"
+              alt="Komposisi Interior Minimalis & Siluet" class="gallery-img" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">Fotografi</span>
+              <h3 class="item-title">Solitude & Light Ray</h3>
+              <p class="item-snippet">Studi bayangan dan pembiasan cahaya alami melalui partisi kaca tekstur.</p>
+              <div class="item-actions-row">
+                <button class="btn-lightbox" aria-label="Lihat foto penuh Solitude & Light Ray" title="Pratinjau Foto">
+                  <i class="fa-solid fa-expand"></i>
+                </button>
+                <button class="btn-case-study" data-project="8" aria-label="Buka studi kasus Solitude & Light Ray"
+                  title="Studi Kasus Lengkap">
+                  <i class="fa-solid fa-file-lines"></i> <span>Studi Kasus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       URUTAN ANGGOTA KELUARGA & ORANG RUMAH (6 ANGGOTA)
+  =============================================== -->
+  <section class="family-section" id="family">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><i class="fa-solid fa-people-roof"></i> Fondasi & Kehangatan Rumah</span>
+        <h2 class="section-title">Urutan Anggota <span class="text-gradient">Keluarga & Orang Rumah</span></h2>
+        <p class="section-desc">Mengenal lebih dekat 6 anggota keluarga tercinta di kediaman Ruteng, Manggarai, NTT —
+          fondasi cinta, teladan disiplin, doa tulus, dan kehangatan yang senantiasa menguatkan setiap langkah kehidupan
+          Satria.</p>
+      </div>
+
+      <!-- Quick Family Stats Bar -->
+      <div class="family-stats-bar reveal">
+        <div class="family-stat-item">
+          <div class="stat-icon-wrap"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-meta">
+            <span class="stat-count" id="familyTotalCount">6</span>
+            <span class="stat-label">Total Anggota Rumah</span>
+          </div>
+        </div>
+        <div class="family-stat-item">
+          <div class="stat-icon-wrap male-tint"><i class="fa-solid fa-mars"></i></div>
+          <div class="stat-meta">
+            <span class="stat-count">2</span>
+            <span class="stat-label">Laki-laki</span>
+          </div>
+        </div>
+        <div class="family-stat-item">
+          <div class="stat-icon-wrap female-tint"><i class="fa-solid fa-venus"></i></div>
+          <div class="stat-meta">
+            <span class="stat-count">4</span>
+            <span class="stat-label">Perempuan</span>
+          </div>
+        </div>
+        <div class="family-stat-item">
+          <div class="stat-icon-wrap house-tint"><i class="fa-solid fa-house-chimney-heart"></i></div>
+          <div class="stat-meta">
+            <span class="stat-count">-</span>
+            <span class="stat-label">Kediaman Ruteng, NTT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Panel: Filter Pills, Search, Sort -->
+      <div class="family-controls-wrapper reveal">
+        <div class="family-filter-pills" id="familyFilterGroup">
+          <button class="fam-pill-btn active" data-filter="all">
+            <i class="fa-solid fa-layer-group"></i> Semua Anggota (6)
+          </button>
+          <button class="fam-pill-btn" data-filter="male">
+            <i class="fa-solid fa-mars"></i> Laki-laki (2)
+          </button>
+          <button class="fam-pill-btn" data-filter="female">
+            <i class="fa-solid fa-venus"></i> Perempuan (4)
+          </button>
+          <button class="fam-pill-btn" data-filter="parents">
+            <i class="fa-solid fa-hands-holding-child"></i> Orang Tua (2)
+          </button>
+          <button class="fam-pill-btn" data-filter="children">
+            <i class="fa-solid fa-children"></i> Anak (4)
+          </button>
+        </div>
+
+        <div class="family-search-sort-bar">
+          <div class="family-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="familySearchInput" placeholder="Cari nama, peran, profesi, atau hobi..."
+              aria-label="Cari Anggota Keluarga">
+            <button class="clear-search-btn" id="familyClearSearch" title="Hapus Pencarian" style="display: none;">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="family-sort-box">
+            <label for="familySortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i></label>
+            <select id="familySortSelect" aria-label="Urutkan Anggota Keluarga">
+              <option value="order-asc">Urutan Keluarga (#1 - #6)</option>
+              <option value="age-desc">Usia: Tertua ke Termuda</option>
+              <option value="age-asc">Usia: Termuda ke Tertua</option>
+              <option value="name-asc">Nama: A - Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid 6 Anggota Keluarga -->
+      <div class="family-grid reveal" id="familyGrid">
+
+        <!-- ANGGOTA 1: AYAH (KEPALA KELUARGA) -->
+        <article class="family-card" data-order="1" data-gender="male" data-group="parents" data-birth="1981"
+          data-name="Kristo Candra Jehadu">
+          <div class="family-card-header">
+            <span class="order-badge"><i class="fa-solid fa-crown"></i> Urutan #1</span>
+            <span class="role-badge role-head"><i class="fa-solid fa-user-tie"></i> Kepala Keluarga</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap male-glow">
+              <img src="ayah.jpg" alt="Kristo Candra Jehadu" class="fam-avatar-img">
+              <span class="gender-icon-badge male" title="Laki-laki"><i class="fa-solid fa-mars"></i></span>
+            </div>
+            <h3 class="fam-name">Kristo Candra Jehadu</h3>
+            <span class="fam-alias">"Bapa Ito"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill male"><i class="fa-solid fa-mars"></i>
+                  Laki-laki</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Ayah / Kepala Rumah Tangga</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">1981</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="1981">45 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">Wiraswasta</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Capricorn ♑</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-seedling"></i> Berkebun</span>
+              <span class="fam-tag"><i class="fa-solid fa-chess"></i> Catur</span>
+              <span class="fam-tag"><i class="fa-solid fa-newspaper"></i> Membaca Berita</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Disiplin, kejujuran, dan keteladanan orang tua adalah fondasi utama kehormatan
+              keluarga."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="1">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- ANGGOTA 2: IBU (PENGELOLA RUMAH TANGGA) -->
+        <article class="family-card" data-order="2" data-gender="female" data-group="parents" data-birth="1981"
+          data-name="Maria Alosyia Hadiawisudah Dandut">
+          <div class="family-card-header">
+            <span class="order-badge"><i class="fa-solid fa-heart"></i> Urutan #2</span>
+            <span class="role-badge role-mom"><i class="fa-solid fa-person-dress"></i> Ibu Rumah Tangga</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap female-glow">
+              <img src="ibu.jpg" alt="Maria Alosyia Hadiawisudah Dandut" class="fam-avatar-img">
+              <span class="gender-icon-badge female" title="Perempuan"><i class="fa-solid fa-venus"></i></span>
+            </div>
+            <h3 class="fam-name">Maria Alosyia Hadiawisudah Dandut</h3>
+            <span class="fam-alias">"Mama Wiss"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill female"><i class="fa-solid fa-venus"></i>
+                  Perempuan</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Ibu / Pengelola Rumah Tangga</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">1981</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="1981">45 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">ASN (Aparatur Sipil Negara)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Libra ♎</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-utensils"></i> Kuliner Khas</span>
+              <span class="fam-tag"><i class="fa-solid fa-fan"></i> Tanaman Hias</span>
+              <span class="fam-tag"><i class="fa-solid fa-scissors"></i> Menjahit</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Kasih sayang seorang ibu dan kehangatan rumah adalah tempat berlabuh teraman bagi
+              anak-anak."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="2">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- ANGGOTA 3: ANAK PERTAMA (SULUNG PEREMPUAN) -->
+        <article class="family-card" data-order="3" data-gender="female" data-group="children" data-birth="2002"
+          data-name="Yustina Vania Ghaisani Jehadu">
+          <div class="family-card-header">
+            <span class="order-badge"><i class="fa-solid fa-star"></i> Urutan #3</span>
+            <span class="role-badge role-daughter"><i class="fa-solid fa-person-dress"></i> Anak Pertama (Sulung)</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap female-glow">
+              <img src="anak-pertama.jpg" alt="Yustina Vania Ghaisani Jehadu" class="fam-avatar-img">
+              <span class="gender-icon-badge female" title="Perempuan"><i class="fa-solid fa-venus"></i></span>
+            </div>
+            <h3 class="fam-name">Yustina Vania Ghaisani Jehadu</h3>
+            <span class="fam-alias">"Vania"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill female"><i class="fa-solid fa-venus"></i>
+                  Perempuan</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Anak Pertama (Sulung)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">2002</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="2002">24 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">ASN (Aparatur Sipil Negara)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Leo ♌</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-camera"></i> Fotografi Alam</span>
+              <span class="fam-tag"><i class="fa-solid fa-palette"></i> Desain Interior</span>
+              <span class="fam-tag"><i class="fa-solid fa-guitar"></i> Gitar Akustik</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Menjadi anak sulung perempuan berarti memberi teladan ketulusan, mengayomi adik-adik, dan memikul
+              tanggung jawab dengan bangga."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="3">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- ANGGOTA 4: ANAK KEDUA (KAKAK PEREMPUAN) -->
+        <article class="family-card" data-order="4" data-gender="female" data-group="children" data-birth="2005"
+          data-name="Magareta Nesa Ghaisani Jehadu">
+          <div class="family-card-header">
+            <span class="order-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Urutan #4</span>
+            <span class="role-badge role-daughter"><i class="fa-solid fa-person-dress"></i> Anak Kedua</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap female-glow">
+              <img src="anak-kedua.jpg" alt="Magareta Nesa Ghaisani Jehadu" class="fam-avatar-img">
+              <span class="gender-icon-badge female" title="Perempuan"><i class="fa-solid fa-venus"></i></span>
+            </div>
+            <h3 class="fam-name">Magareta Nesa Ghaisani Jehadu</h3>
+            <span class="fam-alias">"Nessa"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill female"><i class="fa-solid fa-venus"></i>
+                  Perempuan</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Anak Kedua (Kakak Perempuan)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">2005</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="2005">21 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">Mahasiswa</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Scorpio ♏</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-palette"></i> Desain Grafis</span>
+              <span class="fam-tag"><i class="fa-solid fa-book"></i> Membaca Novel</span>
+              <span class="fam-tag"><i class="fa-solid fa-table-tennis-paddle-ball"></i> Bulutangkis</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Kreativitas yang dipadukan dengan senyuman tulus akan selalu menebarkan keceriaan dan inspirasi
+              bagi sekitar."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="4">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- ANGGOTA 5: ANAK KETIGA (SATRIA PRATAMA - LAKI-LAKI TUNGGAL) -->
+        <article class="family-card satria-card" data-order="5" data-gender="male" data-group="children"
+          data-birth="2007" data-name="Frederich Satria Pratama Putra Jehadu">
+          <div class="family-card-header">
+            <span class="order-badge order-highlight"><i class="fa-solid fa-code"></i> Urutan #5</span>
+            <span class="role-badge role-satria"><i class="fa-solid fa-laptop-code"></i> Anak Ketiga
+              (Laki-laki Tunggal)</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap satria-glow">
+              <img src="satria-profile.jpg" alt="Satria Pratama" class="fam-avatar-img">
+              <span class="gender-icon-badge male" title="Laki-laki"><i class="fa-solid fa-mars"></i></span>
+            </div>
+            <h3 class="fam-name">Frederich Satria Pratama Putra Jehadu</h3>
+            <span class="fam-alias">"Satria (Laki-laki Tunggal)"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill male"><i class="fa-solid fa-mars"></i>
+                  Laki-laki</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Anak Ketiga (Satu-satunya Anak Laki-laki)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">2007</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="2007">19 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">Front-End Developer & UI/UX Designer</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Virgo ♍</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-terminal"></i> Creative Coding</span>
+              <span class="fam-tag"><i class="fa-solid fa-gamepad"></i> Game Arcade</span>
+              <span class="fam-tag"><i class="fa-solid fa-compass-drafting"></i> Desain UI/UX</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Apa yang ditanam hari ini tumbuh jadi kekuatan di masa depan; sebagai satu-satunya anak laki-laki,
+              tekad menjaga dan membanggakan keluarga adalah komitmen seumur hidup."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="5">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- ANGGOTA 6: ANAK KEEMPAT (BUNGSU PEREMPUAN) -->
+        <article class="family-card" data-order="6" data-gender="female" data-group="children" data-birth="2008"
+          data-name="Maria Widyawati Ghaisani Jehadu">
+          <div class="family-card-header">
+            <span class="order-badge"><i class="fa-solid fa-gamepad"></i> Urutan #6</span>
+            <span class="role-badge role-daughter"><i class="fa-solid fa-person-dress"></i> Anak Keempat (Bungsu)</span>
+          </div>
+
+          <div class="family-profile-center">
+            <div class="family-avatar-wrap female-glow">
+              <img src="anak-keempat.jpg" alt="Maria Widyawati Ghaisani Jehadu" class="fam-avatar-img">
+              <span class="gender-icon-badge female" title="Perempuan"><i class="fa-solid fa-venus"></i></span>
+            </div>
+            <h3 class="fam-name">Maria Widyawati Ghaisani Jehadu</h3>
+            <span class="fam-alias">"Widy (Bungsu)"</span>
+          </div>
+
+          <div class="family-specs-grid">
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin:</span>
+              <span class="val"><span class="gender-pill female"><i class="fa-solid fa-venus"></i>
+                  Perempuan</span></span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-sitemap"></i> Hubungan:</span>
+              <span class="val">Anak Keempat (Bungsu)</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-regular fa-calendar-days"></i> Tahun Kelahiran:</span>
+              <span class="val val-accent">2008</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-hourglass-half"></i> Umur:</span>
+              <span class="val val-accent fam-calc-age" data-birth="2008">18 Tahun</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-briefcase"></i> Profesi:</span>
+              <span class="val">Mahasiswa</span>
+            </div>
+            <div class="spec-line">
+              <span class="label"><i class="fa-solid fa-droplet"></i> Gol. Darah / Zodiak:</span>
+              <span class="val">A • Libra ♎</span>
+            </div>
+          </div>
+
+          <div class="family-hobbies">
+            <span class="hobbies-label">Hobi & Kegemaran:</span>
+            <div class="fam-tag-group">
+              <span class="fam-tag"><i class="fa-solid fa-masks-theater"></i> Seni Tari & Teater</span>
+              <span class="fam-tag"><i class="fa-solid fa-film"></i> Animasi Digital</span>
+              <span class="fam-tag"><i class="fa-solid fa-robot"></i> Robotika</span>
+            </div>
+          </div>
+
+          <div class="family-quote-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>"Semangat belajar hal baru dan rasa ingin tahu yang tinggi adalah kunci untuk meraih impian masa
+              depan."</span>
+          </div>
+
+          <div class="family-card-action">
+            <button class="btn btn-outline btn-sm btn-block btn-open-fam-modal" data-member="6">
+              <i class="fa-solid fa-id-card"></i> Lihat Biodata Lengkap
+            </button>
+          </div>
+        </article>
+
+        <!-- Empty state jika pencarian tidak cocok -->
+        <div class="family-empty-state" id="familyEmptyState" style="display: none;">
+          <i class="fa-solid fa-user-slash"></i>
+          <h4>Anggota Tidak Ditemukan</h4>
+          <p>Tidak ada anggota keluarga yang cocok dengan kriteria pencarian Anda.</p>
+          <button class="btn btn-primary btn-sm" id="btnResetFamilySearch">
+            <i class="fa-solid fa-rotate-left"></i> Reset Filter
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==============================================
+       CERTIFICATES & PROFESSIONAL HONORS SECTION
+  =============================================== -->
+  <section class="certificates-section" id="certificates">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Kredensial & Validasi</span>
+        <h2 class="section-title">Sertifikasi & <span class="text-gradient">Kompetensi Resmi</span></h2>
+        <p class="section-desc">Pengakuan kompetensi teknis dari berbagai institusi teknologi global terkemuka untuk
+          menjamin standar mutu rekayasa web terbaik.</p>
+      </div>
+
+      <div class="certificates-grid reveal">
+        <!-- Sertifikat 1 -->
+        <div class="cert-card" data-cert-id="CERT-FE-9921">
+          <div class="cert-icon-wrapper">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">Dicoding Academy & IDCamp</span>
+            <h3 class="cert-title">Menjadi Front-End Web Developer Expert</h3>
+            <p class="cert-meta">Fokus: Web Components, Progressive Web Apps (PWA), Web Accessibility & TDD.</p>
+            <div class="cert-footer">
+              <span class="cert-id-tag">ID: CERT-FE-9921</span>
+              <button class="btn-verify-cert" data-cert="1" aria-label="Verifikasi Sertifikat FE Expert">
+                Verifikasi <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 2 -->
+        <div class="cert-card" data-cert-id="CERT-UX-7742">
+          <div class="cert-icon-wrapper">
+            <i class="fa-brands fa-google"></i>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">Google & Coursera</span>
+            <h3 class="cert-title">Google UX Design Professional Certificate</h3>
+            <p class="cert-meta">Fokus: User Research, Empathy Maps, Wireframing, Figma Prototypes & Usability Testing.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-id-tag">ID: CERT-UX-7742</span>
+              <button class="btn-verify-cert" data-cert="2" aria-label="Verifikasi Sertifikat Google UX">
+                Verifikasi <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 3 -->
+        <div class="cert-card" data-cert-id="CERT-JS-3310">
+          <div class="cert-icon-wrapper">
+            <i class="fa-brands fa-free-code-camp"></i>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">freeCodeCamp International</span>
+            <h3 class="cert-title">JavaScript Algorithms & Data Structures</h3>
+            <p class="cert-meta">Fokus: Kompleksitas Algoritma (Big O), OOP, Functional Programming, Algoritma Pemecahan
+              Masalah.</p>
+            <div class="cert-footer">
+              <span class="cert-id-tag">ID: CERT-JS-3310</span>
+              <button class="btn-verify-cert" data-cert="3" aria-label="Verifikasi Sertifikat JavaScript FCC">
+                Verifikasi <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 4 -->
+        <div class="cert-card" data-cert-id="CERT-CLOUD-1099">
+          <div class="cert-icon-wrapper">
+            <i class="fa-brands fa-aws"></i>
+          </div>
+          <div class="cert-body">
+            <span class="cert-issuer">AWS Educate & Cloud Academy</span>
+            <h3 class="cert-title">Cloud Computing Foundations & Web Deployment</h3>
+            <p class="cert-meta">Fokus: Arsitektur Cloud, Serverless hosting, CDN, Security best practices & DNS.</p>
+            <div class="cert-footer">
+              <span class="cert-id-tag">ID: CERT-CLOUD-1099</span>
+              <button class="btn-verify-cert" data-cert="4" aria-label="Verifikasi Sertifikat Cloud">
+                Verifikasi <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ==============================================
+       CONTACT SECTION (FORMULIR DENGAN VALIDASI JS)
+  =============================================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Mari Berkolaborasi</span>
+        <h2 class="section-title">Mulai Sebuah <span class="text-gradient">Percakapan Bermakna</span></h2>
+        <p class="section-desc">Punya ide proyek brilian, tawaran kolaborasi, atau sekadar ingin menyapa? Kirim pesan
+          Anda melalui formulir di bawah ini.</p>
+      </div>
+
+      <div class="contact-wrapper">
+        <!-- Informasi Kontak Langsung -->
+        <div class="contact-info-card reveal">
+          <div class="info-card-header">
+            <h3>Informasi Kontak</h3>
+            <p>Saya biasanya membalas pesan dalam waktu kurang dari 24 jam kerja.</p>
+          </div>
+
+          <div class="contact-details-list">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-title">Kirim Surel</span>
+                <a href="mailto:satriajehadu@gmail.com" class="contact-link">satriajehadu@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-title">WhatsApp Bisnis</span>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="contact-link">+62
+                  812-3456-7890</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-title">Lokasi Kerja</span>
+                <span class="contact-desc">Ruteng, Manggarai, NTT, Indonesia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Ketersediaan Real-Time -->
+          <div class="availability-card">
+            <div class="avail-indicator">
+              <span class="avail-ping"></span>
+              <span class="avail-dot"></span>
+            </div>
+            <div>
+              <h4 class="avail-title">Tersedia untuk Q3/Q4</h4>
+              <p class="avail-desc">Menerima proyek freelance, konsultasi UI/UX, dan kontrak kerja sama pengembangan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulir Kontak Interaktif -->
+        <div class="contact-form-card reveal">
+          <form id="contactForm" class="contact-form" novalidate>
+            <!-- Input Nama -->
+            <div class="form-group">
+              <label for="userName" class="form-label">Nama Lengkap <span class="req">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-user input-icon"></i>
+                <input type="text" id="userName" name="name" class="form-input" placeholder="Contoh: Raden Wijaya"
+                  required autocomplete="name">
+              </div>
+              <span class="error-msg" id="nameError"></span>
+            </div>
+
+            <!-- Input Email -->
+            <div class="form-group">
+              <label for="userEmail" class="form-label">Alamat Surel <span class="req">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-envelope input-icon"></i>
+                <input type="email" id="userEmail" name="email" class="form-input" placeholder="nama@perusahaan.com"
+                  required autocomplete="email">
+              </div>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+
+            <!-- Input Subjek / Topik -->
+            <div class="form-group">
+              <label for="userSubject" class="form-label">Topik Diskusi</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-tag input-icon"></i>
+                <input type="text" id="userSubject" name="subject" class="form-input"
+                  placeholder="Contoh: Pembuatan Website Portofolio / Brand Baru">
+              </div>
+            </div>
+
+            <!-- Input Pesan -->
+            <div class="form-group">
+              <label for="userMessage" class="form-label">Deskripsi Pesan <span class="req">*</span></label>
+              <div class="input-wrapper textarea-wrapper">
+                <i class="fa-regular fa-comment-dots input-icon textarea-icon"></i>
+                <textarea id="userMessage" name="message" class="form-input form-textarea" rows="4"
+                  placeholder="Ceritakan detail proyek, linimasa yang diharapkan, atau pertanyaan Anda di sini..."
+                  required></textarea>
+              </div>
+              <span class="error-msg" id="messageError"></span>
+            </div>
+
+            <!-- Tombol Kirim dengan Animasi Loading -->
+            <button type="submit" class="btn btn-submit" id="btnSubmitForm">
+              <span class="btn-text">Kirim Pesan Sekarang</span>
+              <span class="btn-loader" id="btnLoader" aria-hidden="true">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+              </span>
+              <i class="fa-solid fa-paper-plane btn-icon-send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       PEMUTAR MUSIK MINI KUSTOM (GLASSMORPHIC AUDIO DOCK)
+  =============================================== -->
+  <aside class="mini-music-dock" id="musicDock" aria-label="Pemutar Musik Latar Belakang">
+    <!-- Layar Mini Video Musik YouTube (Bisa dibuka/ditutup, audio tetap bermain) -->
+    <div class="music-video-screen" id="musicVideoScreen">
+      <div class="video-screen-header">
+        <span class="video-screen-badge"><i class="fa-brands fa-youtube text-danger"></i> Official MV • Neck Deep</span>
+        <button class="video-screen-close" id="btnCloseVideoScreen" aria-label="Tutup Layar Video"
+          title="Sembunyikan Video (Lagu Tetap Berjalan)">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="video-iframe-container" id="videoIframeContainer">
+        <div id="ytPlayerContainer"></div>
+      </div>
+      <div class="video-screen-footer"
+        style="padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); font-size: 0.72rem; border-top: 1px solid rgba(255,255,255,0.08);">
+        <span style="color: var(--text-muted);"><i class="fa-solid fa-volume-high text-accent"></i> Audio Direct
+          Stream</span>
+        <a href="https://www.youtube.com/watch?v=VyPwEZTIpVc" target="_blank" rel="noopener noreferrer"
+          id="ytDirectWatchBtn"
+          style="color: var(--neon-cyan); text-decoration: none; display: flex; align-items: center; gap: 4px; font-weight: 500;">
+          <i class="fa-brands fa-youtube text-danger"></i> Tonton di YouTube <i
+            class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="music-card">
+      <!-- Vinyl / Cover Musik -->
+      <div class="music-disc-wrapper" id="musicDiscWrapper">
+        <img src="https://img.youtube.com/vi/VyPwEZTIpVc/hqdefault.jpg" alt="Album Cover Neck Deep"
+          class="music-disc-img" id="musicDiscImg">
+        <div class="music-disc-center"></div>
+      </div>
+
+      <!-- Info Lagu & Kontrol -->
+      <div class="music-body">
+        <div class="music-header-row">
+          <div class="music-meta">
+            <span class="music-badge">Now Playing • Pop-Punk</span>
+            <div class="music-title-scroll">
+              <span class="music-title" id="musicTitle">Wish You Were Here</span>
+            </div>
+            <span class="music-artist" id="musicArtist">Neck Deep</span>
+          </div>
+
+          <!-- Animasi Equalizer Sound Wave -->
+          <div class="sound-wave-bars" id="soundWave" aria-hidden="true">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+            <span class="bar bar-5"></span>
+          </div>
+        </div>
+
+        <!-- Progress Bar Interaktif -->
+        <div class="music-progress-wrapper" id="progressContainer">
+          <div class="music-progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="music-controls-row">
+          <span class="music-time" id="currentTime">00:00</span>
+
+          <div class="music-buttons">
+            <button class="music-btn" id="btnPrevTrack" aria-label="Lagu Sebelumnya">
+              <i class="fa-solid fa-backward-step"></i>
+            </button>
+
+            <button class="music-btn btn-play-main" id="btnPlayPause" aria-label="Putar Musik">
+              <i class="fa-solid fa-play" id="playIcon"></i>
+            </button>
+
+            <button class="music-btn" id="btnNextTrack" aria-label="Lagu Berikutnya">
+              <i class="fa-solid fa-forward-step"></i>
+            </button>
+          </div>
+
+          <!-- Tombol Mute / Volume Slider Ringkas -->
+          <div class="music-volume-group">
+            <button class="music-btn btn-volume" id="btnMute" aria-label="Mute Audio" title="Mute Audio">
+              <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+            </button>
+            <input type="range" min="0" max="1" step="0.05" value="0.75" class="volume-slider" id="volumeSlider"
+              aria-label="Pengatur Volume">
+          </div>
+
+          <!-- Tombol Daftar Lagu, Video MV, & Upload Lagu Sendiri -->
+          <div class="music-extra-controls">
+            <button class="music-btn" id="btnToggleVideo" aria-label="Tampilkan Video Musik"
+              title="Lihat Official Video Klip (MV)">
+              <i class="fa-solid fa-tv"></i>
+            </button>
+            <button class="music-btn" id="btnOpenPlaylist" aria-label="Daftar Lagu (Playlist)"
+              title="Pilih Lagu / Playlist">
+              <i class="fa-solid fa-list-ul"></i>
+            </button>
+            <button class="music-btn" id="btnUploadSong" aria-label="Putar Lagu Sendiri (MP3)"
+              title="Putar File MP3 Anda Sendiri">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </button>
+            <input type="file" id="audioFileInput" accept="audio/*" style="display: none;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tombol Minimize / Expand Dock -->
+      <button class="music-dock-toggle" id="btnDockToggle" aria-label="Sembunyikan Pemutar Musik">
+        <i class="fa-solid fa-chevron-down" id="dockToggleIcon"></i>
+      </button>
+
+      <!-- Panel Popover Daftar Lagu & Custom Audio Picker -->
+      <div class="playlist-popover" id="playlistPopover" aria-hidden="true">
+        <div class="playlist-popover-header">
+          <h4><i class="fa-solid fa-compact-disc text-accent"></i> Pilih Lagu Anda</h4>
+          <button class="playlist-popover-close" id="playlistPopoverClose" aria-label="Tutup Daftar Lagu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="playlist-items-list" id="playlistItemsList">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+        <div class="playlist-custom-box">
+          <span class="custom-box-title"><i class="fa-solid fa-folder-open"></i> Punya Lagu Favorit Sendiri?</span>
+          <button class="btn btn-primary btn-sm btn-block" id="btnPickLocalSong">
+            <i class="fa-solid fa-file-audio"></i> Putar File MP3 dari Laptop
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elemen Audio Tersembunyi (Akan diputar oleh script.js) -->
+    <audio id="audioElement" preload="auto" src="neck-deep-wish-you-were-here.m4a"></audio>
+  </aside>
+
+  <!-- ==============================================
+       MODAL 1: LIGHTBOX PREVIEW FOTO BESAR
+  =============================================== -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Tutup Pratinjau Foto">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Navigasi Prev / Next -->
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Foto Sebelumnya">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Foto Selanjutnya">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <div class="lightbox-media-wrapper">
+        <img src="" alt="" id="lightboxImg" class="lightbox-img">
+      </div>
+
+      <div class="lightbox-caption">
+        <span class="lightbox-cat" id="lightboxCategory">Kategori</span>
+        <h3 class="lightbox-title" id="lightboxTitle">Judul Karya</h3>
+        <p class="lightbox-desc" id="lightboxDesc">Deskripsi lengkap dari karya atau foto yang sedang ditampilkan.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 2: INTERACTIVE PROJECT CASE STUDY
+  =============================================== -->
+  <div class="case-study-modal" id="caseStudyModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="case-study-backdrop" id="caseStudyBackdrop"></div>
+    <div class="case-study-container">
+      <button class="case-study-close" id="caseStudyClose" aria-label="Tutup Studi Kasus">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="cs-header">
+        <span class="cs-category-badge" id="csCatBadge">UI/UX & Web Architecture</span>
+        <h2 class="cs-title" id="csTitle">Aether Financial Dashboard</h2>
+        <div class="cs-meta-row">
+          <span><i class="fa-solid fa-calendar"></i> 2024</span>
+          <span><i class="fa-solid fa-user-check"></i> Klien: FinTech Global</span>
+          <span><i class="fa-solid fa-gauge-high"></i> Performa: 99/100</span>
+        </div>
+      </div>
+
+      <!-- Tab Navigasi Studi Kasus -->
+      <div class="cs-tabs-nav">
+        <button class="cs-tab-btn active" data-cs-tab="overview">Ringkasan & Solusi</button>
+        <button class="cs-tab-btn" data-cs-tab="tech">Tech Stack & Arsitektur</button>
+        <button class="cs-tab-btn" data-cs-tab="features">Fitur Utama & Metrik</button>
+        <button class="cs-tab-btn" data-cs-tab="preview">Demo Interaktif</button>
+      </div>
+
+      <!-- Konten Tab -->
+      <div class="cs-tabs-content">
+        <!-- Tab 1: Overview -->
+        <div class="cs-tab-pane active" id="csPane-overview">
+          <div class="cs-grid-split">
+            <div class="cs-text-pane">
+              <h4>Tantangan & Latar Belakang</h4>
+              <p id="csProblem">
+                Klien membutuhkan antarmuka analitik keuangan berskala enterprise yang dapat memproses jutaan transaksi
+                per detik
+                tanpa penurunan performa visual, sekaligus mempertahankan estetika gelap neon yang elegan untuk pengguna
+                trader aktif.
+              </p>
+              <h4>Solusi Rekayasa</h4>
+              <p id="csSolution">
+                Kami membangun arsitektur antarmuka berbasis Vanilla JS dan WebGL visualizer dengan virtualisasi tabel
+                DOM,
+                menghilangkan reflow berlebihan dan mencapai frame rate stabil 60fps pada semua perangkat.
+              </p>
+            </div>
+            <div class="cs-image-pane">
+              <img src="" alt="" id="csHeroImg" class="cs-preview-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Tech Stack -->
+        <div class="cs-tab-pane" id="csPane-tech">
+          <h4>Pustaka & Teknologi yang Digunakan:</h4>
+          <div class="cs-tech-badges" id="csTechBadges">
+            <span class="cs-badge">Vanilla JavaScript (ES6+)</span>
+            <span class="cs-badge">HTML5 Canvas WebGL</span>
+            <span class="cs-badge">CSS Custom Properties</span>
+            <span class="cs-badge">WebSockets Real-time</span>
+            <span class="cs-badge">Figma Prototyping</span>
+          </div>
+          <h4 class="mt-4">Arsitektur Kode:</h4>
+          <pre class="cs-code-sample"><code id="csCodeSnippet">// Modul Data Stream Virtualizer
+export class DataStreamEngine {
+  constructor(socketUrl, chartInstance) {
+    this.socket = new WebSocket(socketUrl);
+    this.chart = chartInstance;
+    this.buffer = [];
+  }
+  syncFrame() {
+    requestAnimationFrame(() => this.chart.render(this.buffer));
+  }
+}</code></pre>
+        </div>
+
+        <!-- Tab 3: Features & Metrics -->
+        <div class="cs-tab-pane" id="csPane-features">
+          <h4>Fitur Unggulan Produk:</h4>
+          <ul class="cs-features-list" id="csFeaturesList">
+            <li><i class="fa-solid fa-check text-accent"></i> Real-time sub-second candlestick charting</li>
+            <li><i class="fa-solid fa-check text-accent"></i> Dark/Neon glassmorphic UI dengan kontras WCAG AAA</li>
+            <li><i class="fa-solid fa-check text-accent"></i> Ekspor laporan otomatis ke format PDF & CSV</li>
+            <li><i class="fa-solid fa-check text-accent"></i> Responsif penuh di ponsel pintar, tablet, dan
+              multi-monitor</li>
+          </ul>
+          <div class="cs-metrics-grid">
+            <div class="cs-metric-box">
+              <span class="cs-metric-num">+140%</span>
+              <span class="cs-metric-label">Retensi Pengguna</span>
+            </div>
+            <div class="cs-metric-box">
+              <span class="cs-metric-num">&lt; 0.4s</span>
+              <span class="cs-metric-label">Waktu Muat Awal</span>
+            </div>
+            <div class="cs-metric-box">
+              <span class="cs-metric-num">99.8%</span>
+              <span class="cs-metric-label">Uptime Client Render</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Interactive Demo -->
+        <div class="cs-tab-pane" id="csPane-preview">
+          <div class="cs-interactive-demo-box">
+            <i class="fa-solid fa-display fa-2x text-accent"></i>
+            <h4>Simulasi Langsung Komponen</h4>
+            <p>Uji interaktivitas komponen proyek ini langsung di jendela peramban Anda.</p>
+            <div class="demo-interactive-widget">
+              <button class="btn btn-primary" id="btnRunDemoSimulation">
+                <i class="fa-solid fa-play"></i> Jalankan Simulasi 60fps
+              </button>
+              <div class="demo-output-screen" id="demoOutputScreen">
+                <span class="text-muted">Klik tombol di atas untuk memulai demo interaktif.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-footer">
+        <a href="#contact" class="btn btn-primary" id="btnCsHire">
+          <i class="fa-regular fa-paper-plane"></i> Buat Proyek Serupa
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-glass" id="btnCsGithub">
+          <i class="fa-brands fa-github"></i> Pratinjau Kode Sumber
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 3: SPOTLIGHT COMMAND PALETTE (CTRL+K)
+  =============================================== -->
+  <div class="command-palette-modal" id="commandPaletteModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cmd-palette-backdrop" id="cmdPaletteBackdrop"></div>
+    <div class="cmd-palette-container">
+      <div class="cmd-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass cmd-search-icon"></i>
+        <input type="text" id="cmdInput"
+          placeholder="Ketik perintah atau cari fitur (misal: 'estimasi', 'terminal', 'game')..." autocomplete="off"
+          spellcheck="false">
+        <span class="cmd-esc-tag">ESC</span>
+      </div>
+
+      <div class="cmd-results-list" id="cmdResultsList">
+        <!-- Kategori: Navigasi Halaman -->
+        <div class="cmd-group-title">Navigasi Halaman</div>
+        <div class="cmd-item" data-action="goto" data-target="#hero">
+          <i class="fa-solid fa-house"></i>
+          <span>Beranda / Hero Section</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#about">
+          <i class="fa-regular fa-user"></i>
+          <span>Profil Tentang Satria</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#skills">
+          <i class="fa-solid fa-code"></i>
+          <span>Matriks Keahlian & Tech Stack</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#journey">
+          <i class="fa-solid fa-timeline"></i>
+          <span>Linimasa Karier & Pendidikan</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#portfolio">
+          <i class="fa-solid fa-image"></i>
+          <span>Galeri Foto & Portofolio</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#family">
+          <i class="fa-solid fa-people-roof"></i>
+          <span>Urutan Anggota Keluarga & Orang Rumah</span>
+          <span class="cmd-item-badge">Keluarga</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#certificates">
+          <i class="fa-solid fa-certificate"></i>
+          <span>Sertifikat & Kredensial Resmi</span>
+          <span class="cmd-item-badge">Navigasi</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#contact">
+          <i class="fa-regular fa-paper-plane"></i>
+          <span>Formulir Kontak Kolaborasi</span>
+          <span class="cmd-item-badge">Kontak</span>
+        </div>
+
+        <!-- Kategori: Aksi Cepat Interaktif -->
+        <div class="cmd-group-title">Aksi & Utilitas Cepat</div>
+        <div class="cmd-item" data-action="terminal">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Buka SatriaOS Developer Terminal (CLI)</span>
+          <span class="cmd-item-badge">Terminal</span>
+        </div>
+        <div class="cmd-item" data-action="theme-drawer">
+          <i class="fa-solid fa-palette"></i>
+          <span>Ubah Tema Warna & Latar Belakang Partikel</span>
+          <span class="cmd-item-badge">Tema</span>
+        </div>
+        <div class="cmd-item" data-action="toggle-music">
+          <i class="fa-solid fa-music"></i>
+          <span>Putar / Jeda Musik Lofi Latar Belakang</span>
+          <span class="cmd-item-badge">Audio</span>
+        </div>
+        <div class="cmd-item" data-action="download-cv">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Unduh Curriculum Vitae (CV PDF)</span>
+          <span class="cmd-item-badge">Unduh</span>
+        </div>
+        <div class="cmd-item" data-action="copy-email">
+          <i class="fa-regular fa-copy"></i>
+          <span>Salin Alamat Email Satria Pratama</span>
+          <span class="cmd-item-badge">Salin</span>
+        </div>
+      </div>
+
+      <div class="cmd-footer">
+        <span>Gunakan <kbd>↑</kbd> <kbd>↓</kbd> untuk memilih</span>
+        <span><kbd>Enter</kbd> untuk mengeksekusi</span>
+        <span><kbd>ESC</kbd> untuk menutup</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 4: HACKER / DEVELOPER TERMINAL (SATRIA OS CLI)
+  =============================================== -->
+  <div class="terminal-modal" id="terminalModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="terminal-backdrop" id="terminalBackdrop"></div>
+    <div class="terminal-window">
+      <!-- Terminal Header / Titlebar -->
+      <div class="terminal-titlebar">
+        <div class="terminal-dots">
+          <span class="dot dot-close" id="btnTermClose" title="Tutup Terminal"></span>
+          <span class="dot dot-min" id="btnTermMin" title="Minimize Terminal"></span>
+          <span class="dot dot-max" id="btnTermMax" title="Maximize Terminal"></span>
+        </div>
+        <div class="terminal-title">
+          <i class="fa-solid fa-terminal"></i> satria@satria-portfolio: ~ (bash / zsh)
+        </div>
+        <div class="terminal-actions">
+          <button class="term-action-btn" id="btnTermClear" title="Bersihkan Konsol (clear)">
+            <i class="fa-solid fa-broom"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Terminal Body / Log -->
+      <div class="terminal-body" id="terminalBody">
+        <div class="term-line term-welcome">
+          <pre class="term-ascii-logo">
+   _____       _        _              _            
+  / ____|     | |      (_)            | |           
+ | (___   __ _| |_ _ __ _  __ _     __| | _____   __
+  \___ \ / _` | __| '__| |/ _` |   / _` |/ _ \ \ / /
+  ____) | (_| | |_| |  | | (_| | _| (_| |  __/\ V / 
+ |_____/ \__,_|\__|_|  |_|\__,_|(_)\__,_|\___| \_/  
+          </pre>
+          <p class="term-green">Selamat datang di SatriaOS v2.4.0 (Interactive Developer Shell).</p>
+          <p class="term-dim">Ketik <span class="term-highlight">help</span> untuk daftar seluruh perintah yang
+            tersedia.</p>
+        </div>
+      </div>
+
+      <!-- Terminal Command Input Line -->
+      <div class="terminal-input-row">
+        <span class="term-prompt"><span class="term-user">satria</span><span class="term-at">@</span><span
+            class="term-host">portfolio</span>:<span class="term-path">~</span>$</span>
+        <input type="text" id="terminalInput" class="term-input" autocomplete="off" spellcheck="false"
+          placeholder="Ketik perintah (contoh: help, skills, theme, game)...">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 5: VERIFIKASI SERTIFIKAT RESMI
+  =============================================== -->
+  <div class="certificate-modal" id="certificateModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cert-modal-backdrop" id="certModalBackdrop"></div>
+    <div class="cert-modal-card">
+      <button class="cert-modal-close" id="certModalClose" aria-label="Tutup Verifikasi Sertifikat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="cert-modal-header">
+        <div class="cert-modal-seal">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="cert-modal-title" id="certModalTitle">Sertifikat Terverifikasi</h3>
+        <span class="cert-status-badge">Terakreditasi & Aktif</span>
+      </div>
+
+      <div class="cert-modal-body">
+        <div class="cert-meta-item">
+          <span class="cert-label">Penerbit Resmi:</span>
+          <span class="cert-val" id="certModalIssuer">Dicoding Indonesia</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-label">Nomor Kredensial:</span>
+          <span class="cert-val" id="certModalNumber">CERT-FE-9921-2024</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-label">Diberikan Kepada:</span>
+          <span class="cert-val">Frederich Satria Pratama</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-label">Materi Keahlian:</span>
+          <span class="cert-val" id="certModalSkills">Progressive Web Apps, Accessibility WCAG, Clean
+            Architecture</span>
+        </div>
+
+        <div class="cert-preview-frame">
+          <div class="cert-preview-badge-watermark">VERIFIED CREDENTIAL</div>
+          <p class="cert-preview-statement">
+            Sertifikat ini memvalidasi penguasaan materi teknis standar industri dengan kriteria kelulusan di atas
+            rata-rata.
+          </p>
+        </div>
+      </div>
+
+      <div class="cert-modal-footer">
+        <a href="javascript:void(0)" class="btn btn-primary" id="btnExternalCertLink" target="_blank"
+          rel="noopener noreferrer">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Tautan Verifikasi Publik
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 6: BIODATA LENGKAP ANGGOTA KELUARGA
+  =============================================== -->
+  <div class="family-modal" id="familyDetailModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="family-modal-backdrop" id="familyModalBackdrop"></div>
+    <div class="family-modal-card">
+      <button class="family-modal-close" id="familyModalClose" aria-label="Tutup Detail Anggota Keluarga">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="fam-modal-top">
+        <div class="fam-modal-avatar-area" id="modalFamAvatarArea">
+          <!-- Populated by JS -->
+        </div>
+        <div class="fam-modal-heading">
+          <div class="fam-modal-badges" id="modalFamBadges"></div>
+          <h3 class="fam-modal-name" id="modalFamName">-</h3>
+          <span class="fam-modal-alias" id="modalFamAlias">-</span>
+        </div>
+      </div>
+
+      <div class="fam-modal-body">
+        <div class="fam-modal-info-list" id="modalFamInfoList">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="fam-modal-hobbies-section">
+          <span class="hobbies-label">Hobi & Kegemaran:</span>
+          <div class="fam-tag-group" id="modalFamHobbies"></div>
+        </div>
+
+        <div class="fam-modal-quote-wrapper">
+          <i class="fa-solid fa-quote-left"></i>
+          <p id="modalFamQuote">-</p>
+        </div>
+      </div>
+
+      <div class="fam-modal-footer">
+        <button class="btn btn-primary btn-block" id="btnGreetFamilyMember">
+          <i class="fa-solid fa-heart"></i> Kirim Doa & Salam Hangat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       DRAWER: PENGATURAN TEMA & VISUAL CUSTOMIZER
+  =============================================== -->
+  <aside class="settings-drawer" id="settingsDrawer" aria-label="Pengaturan Tema & Efek Visual" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <i class="fa-solid fa-palette text-accent"></i>
+        <h3>Personalisasi Tampilan</h3>
+      </div>
+      <button class="drawer-close" id="btnSettingsClose" aria-label="Tutup Pengaturan">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-content">
+      <!-- Pilihan Palet Warna Aksen -->
+      <div class="drawer-section">
+        <h4 class="drawer-sec-title">Palet Warna Aksen Neon:</h4>
+        <div class="theme-palette-grid">
+          <button class="theme-btn active" data-theme="cyan" title="Cyber Cyan (Bawaan)">
+            <span class="theme-circle" style="background: linear-gradient(135deg, #00f2fe, #4facfe);"></span>
+            <span class="theme-name">Cyber Cyan</span>
+          </button>
+          <button class="theme-btn" data-theme="matrix" title="Emerald Matrix">
+            <span class="theme-circle" style="background: linear-gradient(135deg, #00ff87, #60efff);"></span>
+            <span class="theme-name">Emerald Matrix</span>
+          </button>
+          <button class="theme-btn" data-theme="violet" title="Electric Violet">
+            <span class="theme-circle" style="background: linear-gradient(135deg, #9d4edd, #f72585);"></span>
+            <span class="theme-name">Electric Violet</span>
+          </button>
+          <button class="theme-btn" data-theme="solar" title="Solar Gold">
+            <span class="theme-circle" style="background: linear-gradient(135deg, #f6d365, #fda085);"></span>
+            <span class="theme-name">Solar Gold</span>
+          </button>
+          <button class="theme-btn" data-theme="crimson" title="Midnight Crimson">
+            <span class="theme-circle" style="background: linear-gradient(135deg, #ff0844, #ffb199);"></span>
+            <span class="theme-name">Midnight Crimson</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pilihan Mode Animasi Kanvas Latar Belakang -->
+      <div class="drawer-section">
+        <h4 class="drawer-sec-title">Animasi Partikel Kanvas:</h4>
+        <div class="particle-mode-grid">
+          <button class="particle-btn active" data-particle-mode="constellation">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <span>Constellation Net</span>
+          </button>
+          <button class="particle-btn" data-particle-mode="matrix">
+            <i class="fa-solid fa-terminal"></i>
+            <span>Digital Matrix Rain</span>
+          </button>
+          <button class="particle-btn" data-particle-mode="starfield">
+            <i class="fa-solid fa-meteor"></i>
+            <span>Starfield Flow</span>
+          </button>
+          <button class="particle-btn" data-particle-mode="none">
+            <i class="fa-solid fa-ban"></i>
+            <span>Matikan Animasi Latar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pengaturan Suara & Audio Feedback -->
+      <div class="drawer-section">
+        <h4 class="drawer-sec-title">Efek Suara Antarmuka:</h4>
+        <div class="drawer-toggle-row">
+          <div class="toggle-info">
+            <span class="toggle-name">Suara Klik & Interaksi Mikro</span>
+            <span class="toggle-desc">Web Audio API Synth feedback saat klik tombol</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="switchSoundFx" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+        <button class="btn btn-outline btn-block" id="btnResetThemeSettings">
+          <i class="fa-solid fa-rotate-left"></i> Reset ke Pengaturan Awal
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==============================================
+       FLOATING ACTION HUB (FAB) & PROGRESS BACK-TO-TOP
+  =============================================== -->
+  <div class="floating-action-hub" id="floatingActionHub">
+    <!-- Tombol FAB Menu Trigger -->
+    <button class="fab-btn fab-trigger" id="fabTrigger" aria-label="Buka Menu Aksi Cepat" title="Menu Cepat">
+      <i class="fa-solid fa-bolt" id="fabIcon"></i>
+    </button>
+
+    <!-- Sub-menu FAB yang melayang -->
+    <div class="fab-options" id="fabOptions">
+      <button class="fab-sub-btn" id="fabSearch" title="Pencarian Cepat (Ctrl+K)">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="fab-sub-btn" id="fabTerminal" title="Buka Terminal CLI">
+        <i class="fa-solid fa-terminal"></i>
+      </button>
+      <button class="fab-sub-btn" id="fabFamily" title="Profil Anggota Keluarga">
+        <i class="fa-solid fa-people-roof"></i>
+      </button>
+      <button class="fab-sub-btn" id="fabGame" title="Mini Game Arcade">
+        <i class="fa-solid fa-gamepad"></i>
+      </button>
+      <button class="fab-sub-btn" id="fabTheme" title="Ubah Tema">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+    </div>
+
+    <!-- Tombol Back to Top dengan Indikator SVG Progress Melingkar -->
+    <button class="btn-back-to-top" id="btnBackToTop" aria-label="Kembali ke Bagian Teratas" title="Kembali ke Atas">
+      <svg class="progress-ring" width="48" height="48" viewBox="0 0 48 48">
+        <circle class="progress-ring-track" stroke="rgba(255, 255, 255, 0.1)" stroke-width="3" fill="transparent" r="21"
+          cx="24" cy="24" />
+        <circle class="progress-ring-indicator" id="progressRingIndicator" stroke="var(--neon-cyan)" stroke-width="3"
+          stroke-linecap="round" fill="transparent" r="21" cx="24" cy="24" />
+      </svg>
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- ==============================================
+       TOAST NOTIFICATION (FEEDBACK SUBMIT & AKSI)
+  =============================================== -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="polite">
+    <div class="toast-icon" id="toastIcon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div class="toast-content">
+      <h4 class="toast-title" id="toastTitle">Berhasil!</h4>
+      <p class="toast-desc" id="toastDesc">Pesan Anda telah diterima. Terima kasih telah menghubungi!</p>
+    </div>
+    <button class="toast-close" id="toastClose" aria-label="Tutup Notifikasi">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- ==============================================
+       FOOTER LENGKAP DENGAN SITEMAP & STATS
+  =============================================== -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo">
+            <span class="logo-symbol">&lt;</span>Satria<span class="logo-accent">.dev</span><span
+              class="logo-symbol">/&gt;</span>
+          </a>
+          <p class="footer-tagline">Crafting digital sensations with pure code, high aesthetic standard, and
+            micro-interaction perfection.</p>
+          <div class="footer-locale">
+            <i class="fa-solid fa-location-dot"></i> Ruteng, Manggarai, Nusa Tenggara Timur, Indonesia
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigasi Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#about">Tentang Profil</a></li>
+            <li><a href="#skills">Matriks Keahlian</a></li>
+            <li><a href="#journey">Linimasa Karier</a></li>
+            <li><a href="#portfolio">Galeri Portofolio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Fitur & Eksplorasi</h4>
+          <ul class="footer-links">
+            <li><a href="#family">Keluarga & Orang Rumah</a></li>
+            <li><a href="#certificates">Sertifikat Resmi</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Konsultasi Cepat</h4>
+          <p class="footer-col-desc">Punya proyek impian atau ingin berkonsultasi? Jangan ragu mengirimkan email.</p>
+          <a href="mailto:satriajehadu@gmail.com" class="btn btn-outline btn-sm">
+            <i class="fa-regular fa-envelope"></i> Surel Sekarang
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <strong>Frederich Satria Pratama Putra Jehadu</strong>. Seluruh hak cipta dilindungi
+          undang-undang.</p>
+        <p class="footer-love">Dibuat dengan <span class="heart-pulse">❤️</span>, CSS Modern Glassmorphism, &amp;
+          Vanilla JavaScript murni.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Script Interaktif Utama -->
+  <script src="script.js"></script>
+</body>
+
+</html>
